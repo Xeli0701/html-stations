@@ -70,11 +70,9 @@ footer {
     }
     .card__description {
         color: #282828;
-        /*
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        */
         font-size: 10px;
     }
 }
