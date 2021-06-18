@@ -13,9 +13,14 @@ async function getData() {
 
 let test = (userList) => new Promise(function(resolve){
   setTimeout(function() {
-    console.log("waited 3 seconds... return userList");
+    console.log("waited 3 seconds... return full_name added userList");
     resolve();
   },3000);
 }).then(() => {
-  return userList;
+  return userList.map(buildFullName);
 });
+
+function buildFullName(data) {
+  data.full_name = data.family_name + " " +data.first_name
+  return data;
+}
