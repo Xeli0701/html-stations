@@ -6,11 +6,21 @@ async function getData() {
     { id: 1, first_name: '優', family_name: '大木', affilication: 'TechTrain', is_student: false },
     { id: 2, first_name: '太郎', family_name: '山田', affilication: 'HogeHoge大学', is_student: true }
   ];
-  const result = await test()
+  console.log("Promise 3 seconds...")
+  const result = await test(userList)
   return await result
 }
 
-function test() {
-  return
-}
+let test = (userList) => new Promise(function(resolve){
+  setTimeout(function() {
+    console.log("waited 3 seconds... return full_name added userList");
+    resolve();
+  },3000);
+}).then(() => {
+  return userList.map(buildFullName);
+});
 
+function buildFullName(data) {
+  data.full_name = data.family_name + " " +data.first_name
+  return data;
+}
